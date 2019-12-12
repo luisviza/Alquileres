@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlquilerClases", "AlquilerClases\AlquilerClases.csproj", "{BEADBF2D-2F64-4F16-AB48-70DD0208EB55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulariosAlquiler", "FormulariosAlquiler\FormulariosAlquiler.csproj", "{031EAFDC-67D9-44BF-A43C-3E4259F10DBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BEADBF2D-2F64-4F16-AB48-70DD0208EB55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEADBF2D-2F64-4F16-AB48-70DD0208EB55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEADBF2D-2F64-4F16-AB48-70DD0208EB55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{031EAFDC-67D9-44BF-A43C-3E4259F10DBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{031EAFDC-67D9-44BF-A43C-3E4259F10DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{031EAFDC-67D9-44BF-A43C-3E4259F10DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{031EAFDC-67D9-44BF-A43C-3E4259F10DBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

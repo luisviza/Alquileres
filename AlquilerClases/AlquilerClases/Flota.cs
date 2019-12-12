@@ -10,7 +10,7 @@ namespace AlquilerClases
         Disponible,
         Alquilado
     }
-    class Flota
+    public class Flota
     {
         
         public int Id { get; set; }

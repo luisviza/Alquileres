@@ -18,7 +18,7 @@ namespace AlquilerClases
         Mitsubishi,
     }
 
-    class Vehiculo
+    public class Vehiculo
     {
         public string Matricula { get; set; }
         public marcas Marca { get; set; }

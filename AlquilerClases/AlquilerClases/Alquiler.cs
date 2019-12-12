@@ -14,7 +14,7 @@ namespace AlquilerClases
     public class Alquiler
     {
         public int Id { get; set; }
-        public Cliente cliente { get; set; }
+        public Cliente IdCliente { get; set; }
         public DateTime FechaSalida { get; set; }
         public DateTime FechaEntrada { get; set; }
         public  EstadoAlq estadoAlq { get; set; }

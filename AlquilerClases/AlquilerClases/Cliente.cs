@@ -8,5 +8,6 @@ namespace AlquilerClases
 {
     public class Cliente
     {
+
     }
 }

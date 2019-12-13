@@ -150,6 +150,33 @@ namespace FormulariosAlquiler
             }
         }
 
+        private Cliente ObtenerClienteFormulario()
+        {
+            Cliente cliente = new Cliente();
+            if (!string.IsNullOrWhiteSpace(txtId.Text))
+            {
+                cliente.Id = Convert.ToInt32(txtId.Text);
+            }
+
+            cliente.Nombre = txtNombre.Text;
+            cliente.NumeroDocumento = txtNombre.Text;
+            cliente.Nacionalidad = (Nacionalidades)cboNacionalidad.SelectedItem;
+            cliente.Fecha_Nacimiento = dtpFechaNac.Value.Date;
+            cliente.Direccion = txtDireccion.Text;
+            cliente.Contacto = txtContacto.Text;
+
+            if (rbuFem.Checked)
+            {
+                cliente.Sexo = Sexos.Femenino;
+            }
+            else if (rbuMasc.Checked)
+            {
+                cliente.Sexo = Sexos.Masculino;
+            }
+            
+            return cliente;
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimpiarFormulario();
@@ -163,13 +190,59 @@ namespace FormulariosAlquiler
 
         private void frmCliente_Load(object sender, EventArgs e)
         {
-            
-
-
+                       
             ActualizarListaClientes();
             cboNacionalidad.DataSource = Enum.GetValues(typeof(Nacionalidades));
             cboNacionalidad.SelectedItem = null;
             BloquearFormulario();
+        }
+
+        private void lstCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstCliente_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = (Cliente)lstCliente.SelectedItem;
+
+            if (cliente != null)
+            {
+                txtId.Text = Convert.ToString(cliente.Id);
+
+                txtNombre.Text = carne.nombre;
+                txtPeso.Text = Convert.ToString(carne.peso);
+                dtpFechaVencimiento.Value = carne.fecha_vencimiento;
+                txtPrecio.Text = Convert.ToString(carne.precio);
+                cmbCategoria.SelectedItem = (Categoria)carne.categoria;
+                cmbProveedor.SelectedItem = (Proveedor)Proveedor.ObtenerProveedor(carne.proveedor.Id);
+                if (carne.tipo_carne == TipoCarne.Vacuna)
+                {
+                    rdbVacuna.Checked = true;
+                }
+                else if (carne.tipo_carne == TipoCarne.Porcina)
+                {
+                    rdbPorcina.Checked = true;
+                }
+                ResetearCheckedListBox();
+                foreach (string dia in carne.dias_entrega)
+                {
+                    if (dia == "L") clbDias.SetItemChecked(0, true);
+                    else if (dia == "M") clbDias.SetItemChecked(1, true);
+                    else if (dia == "X") clbDias.SetItemChecked(2, true);
+                    else if (dia == "J") clbDias.SetItemChecked(3, true);
+                    else if (dia == "V") clbDias.SetItemChecked(4, true);
+                    else if (dia == "S") clbDias.SetItemChecked(5, true);
+                    else if (dia == "D") clbDias.SetItemChecked(6, true);
+
+
+                }
+                if (true)
+                {
+
+                }
+
+            }
         }
     }
 

@@ -37,6 +37,8 @@
             this.gboListaCliente = new System.Windows.Forms.GroupBox();
             this.lstCliente = new System.Windows.Forms.ListBox();
             this.gboDatosCliente = new System.Windows.Forms.GroupBox();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.cboNacionalidad = new System.Windows.Forms.ComboBox();
             this.rbuMasc = new System.Windows.Forms.RadioButton();
             this.rbuFem = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
@@ -51,7 +53,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNroDoc = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboNacionalidad = new System.Windows.Forms.ComboBox();
             this.gboListaCliente.SuspendLayout();
             this.gboDatosCliente.SuspendLayout();
             this.SuspendLayout();
@@ -133,9 +134,12 @@
             this.lstCliente.Name = "lstCliente";
             this.lstCliente.Size = new System.Drawing.Size(255, 277);
             this.lstCliente.TabIndex = 12;
+            this.lstCliente.Click += new System.EventHandler(this.lstCliente_Click);
+            this.lstCliente.SelectedIndexChanged += new System.EventHandler(this.lstCliente_SelectedIndexChanged);
             // 
             // gboDatosCliente
             // 
+            this.gboDatosCliente.Controls.Add(this.txtId);
             this.gboDatosCliente.Controls.Add(this.cboNacionalidad);
             this.gboDatosCliente.Controls.Add(this.rbuMasc);
             this.gboDatosCliente.Controls.Add(this.rbuFem);
@@ -157,6 +161,21 @@
             this.gboDatosCliente.TabIndex = 31;
             this.gboDatosCliente.TabStop = false;
             this.gboDatosCliente.Text = "Datos Personales";
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(296, 30);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(18, 20);
+            this.txtId.TabIndex = 16;
+            // 
+            // cboNacionalidad
+            // 
+            this.cboNacionalidad.FormattingEnabled = true;
+            this.cboNacionalidad.Location = new System.Drawing.Point(167, 110);
+            this.cboNacionalidad.Name = "cboNacionalidad";
+            this.cboNacionalidad.Size = new System.Drawing.Size(124, 21);
+            this.cboNacionalidad.TabIndex = 15;
             // 
             // rbuMasc
             // 
@@ -259,9 +278,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(26, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 13);
+            this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Nombre y Apellido";
+            this.label2.Text = "Nombre";
             // 
             // txtNroDoc
             // 
@@ -278,14 +297,6 @@
             this.label1.Size = new System.Drawing.Size(117, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Número de Documento";
-            // 
-            // cboNacionalidad
-            // 
-            this.cboNacionalidad.FormattingEnabled = true;
-            this.cboNacionalidad.Location = new System.Drawing.Point(167, 110);
-            this.cboNacionalidad.Name = "cboNacionalidad";
-            this.cboNacionalidad.Size = new System.Drawing.Size(146, 21);
-            this.cboNacionalidad.TabIndex = 15;
             // 
             // frmCliente
             // 
@@ -336,6 +347,7 @@
         private System.Windows.Forms.TextBox txtNroDoc;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cboNacionalidad;
+        private System.Windows.Forms.TextBox txtId;
     }
 }
 

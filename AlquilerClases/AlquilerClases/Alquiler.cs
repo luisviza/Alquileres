@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,161 +16,164 @@ namespace AlquilerClases
     public class Alquiler
     {
         public int Id { get; set; }
-        public Cliente IdCliente { get; set; }
+        public Cliente cliente { get; set; }
         public DateTime FechaSalida { get; set; }
         public DateTime FechaEntrada { get; set; }
         public  EstadoAlq estadoAlq { get; set; }
-
-      /*  public static List<Alquiler> listaProveedores = new List<Alquiler>();
-
-        public static void AgregarProveedor(Alquiler p)
+        public double precioAlq { get; set; }
+        public Flota flota { get; set; }
+        
+        public static List<Alquiler> listaAlquileres = new List<Alquiler>();
+        public static void AgregarAlquiler(Alquiler a)
         {
-            //listaProveedores.Add(p);
+            //listaAlquiler.Add(a);
             using (SqlConnection con = new SqlConnection(SqlServer.CADENA_CONEXION))
-
             {
-                con.Open(); //Abrimos la conex con la BD
-                string textoCmd = "insert into Proveedor (RazonSocial, Direccion, Contacto, Email) VALUES (@RazonSocial, @Direccion, @Contacto, @Email)";
+                con.Open();
+                string textoCmd = @"insert into Alquiler (cliente , FechaSalida, FechaEntrada, estadoAlq, precioAlq, flota) VALUES (@cliente , @FechaSalida, @FechaEntrada, @estadoAlq, @precioAlq, @flota)";
                 SqlCommand cmd = new SqlCommand(textoCmd, con);
-
-                //PARAMETROS
-                SqlParameter p1 = new SqlParameter("@RazonSocial", p.RazonSocial);
-                SqlParameter p2 = new SqlParameter("@Direccion", p.Direccion);
-                SqlParameter p3 = new SqlParameter("@Contacto", p.Contacto);
-                SqlParameter p4 = new SqlParameter("@Email", p.Email);
-
-                //Le decimos a los parametros de que tipo de datos son
-                p1.SqlDbType = SqlDbType.VarChar;
-                p2.SqlDbType = SqlDbType.VarChar;
-                p3.SqlDbType = SqlDbType.VarChar;
-                p4.SqlDbType = SqlDbType.VarChar;
-
-                //Agragamos los parametros al command
-                cmd.Parameters.Add(p1);
-                cmd.Parameters.Add(p2);
-                cmd.Parameters.Add(p3);
-                cmd.Parameters.Add(p4);
+                cmd = a.ObtenerParametros(cmd, false);
 
                 cmd.ExecuteNonQuery();
 
+
             }
-
-
-
         }
-        public static void EliminarProveedor(Proveedor p)
+        public static void EliminarAlquiler(Alquiler a)
         {
-            //listaProveedores.Remove(p);
-            //listaProveedores.Add(p);
-            using (SqlConnection con = new SqlConnection(SqlServer.CADENA_CONEXION))
 
+            using (SqlConnection con = new SqlConnection(SqlServer.CADENA_CONEXION))
             {
                 con.Open();
-                string SENTENCIA_SQL = "delete from Proveedor where Id = @Id";
+                string textoCmd = @"delete from Alquiler where Id = @Id";
 
-                SqlCommand cmd = new SqlCommand(SENTENCIA_SQL, con);
-                SqlParameter p5 = new SqlParameter("@Id", p.Id);
-                p5.SqlDbType = SqlDbType.Int;
-                cmd.Parameters.Add(p5);
+                SqlCommand cmd = new SqlCommand(textoCmd, con);
+                cmd = a.ObtenerParametroId(cmd);
 
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public static void EditarProveedor(int index, Proveedor p)
+        public static void EditarCliente(int index, Alquiler a)
         {
-            //listaProveedores[index] = p;
+
             using (SqlConnection con = new SqlConnection(SqlServer.CADENA_CONEXION))
             {
                 con.Open();
-                string textoCMD = "UPDATE Proveedor SET RazonSocial = @razonSocial, Direccion = @direccion, Contacto = @contacto, Email = @email where Id = @Id";
-
-                SqlCommand cmd = new SqlCommand(textoCMD, con);
-
-                //DEFINICION DE PARAMETROS
-                SqlParameter p1 = new SqlParameter("@razonSocial", p.RazonSocial);
-                SqlParameter p2 = new SqlParameter("@direccion", p.Direccion);
-                SqlParameter p3 = new SqlParameter("@contacto", p.Contacto);
-                SqlParameter p4 = new SqlParameter("@email", p.Email);
-                SqlParameter p5 = new SqlParameter("@Id", p.Id);
-
-                //Le decimos a los parametros de que tipo de datos son
-                p1.SqlDbType = SqlDbType.VarChar;
-                p2.SqlDbType = SqlDbType.VarChar;
-                p3.SqlDbType = SqlDbType.VarChar;
-                p4.SqlDbType = SqlDbType.VarChar;
-                p5.SqlDbType = SqlDbType.Int;
-
-                cmd.Parameters.Add(p1);
-                cmd.Parameters.Add(p2);
-                cmd.Parameters.Add(p3);
-                cmd.Parameters.Add(p4);
-                cmd.Parameters.Add(p5);
+                string textoCmd = @"UPDATE Alquiler SET cliente = @cliente  , FechaSalida = @FechaSalida,  FechaEntrada = @FechaEntrada, estadoAlq = @estadoAlq, precioAlq = @precioAlq, flota = @flota  where id = @id";
+                SqlCommand cmd = new SqlCommand(textoCmd, con);
+                cmd = a.ObtenerParametros(cmd, true);
 
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public static Proveedor ObtenerProveedor(int id)
-        {
-            Proveedor proveedor = null;
-
-            if (listaProveedores.Count == 0)
-            {
-                Proveedor.ObtenerProveedores();
-            }
-
-            foreach (Proveedor p in listaProveedores)
-            {
-                if (p.Id == id)
-                {
-                    proveedor = p;
-                    break;
-                }
-            }
-
-            return proveedor;
-        }
-
-        public static List<Proveedor> ObtenerProveedores()
+        public static List<Alquiler> ObtenerAlquileres()
         {
 
+            Alquiler alquiler;
+            listaAlquileres.Clear();
 
-            Proveedor proveedor;
-            listaProveedores.Clear();
             using (SqlConnection con = new SqlConnection(SqlServer.CADENA_CONEXION))
-
             {
                 con.Open();
-                string textoCMD = "Select * from Proveedor";
 
-                SqlCommand cmd = new SqlCommand(textoCMD, con);
+                string textoCmd = "Select * from Alquiler";
+
+                SqlCommand cmd = new SqlCommand(textoCmd, con);
 
                 SqlDataReader elLectorDeDatos = cmd.ExecuteReader();
 
                 while (elLectorDeDatos.Read())
                 {
-                    proveedor = new Proveedor();
-                    proveedor.Id = elLectorDeDatos.GetInt32(0);
-                    proveedor.RazonSocial = elLectorDeDatos.GetString(1);
-                    proveedor.Direccion = elLectorDeDatos.GetString(2);
-                    proveedor.Contacto = elLectorDeDatos.GetString(3);
-                    proveedor.Email = elLectorDeDatos.GetString(4);
 
-                    listaProveedores.Add(proveedor);
+
+                    alquiler = new Alquiler();
+                    alquiler.Id = elLectorDeDatos.GetInt32(0);
+                    alquiler.cliente = Cliente.ObtenerCliente(elLectorDeDatos.GetInt32(1));
+                    alquiler.FechaSalida = elLectorDeDatos.GetDateTime(2);
+                    alquiler.FechaEntrada = elLectorDeDatos.GetDateTime(3);
+                    alquiler.estadoAlq = (EstadoAlq)elLectorDeDatos.GetInt32(4);
+                    alquiler.precioAlq = elLectorDeDatos.GetDouble(5);
+                    alquiler.flota = Flota.ObtenerFlota(elLectorDeDatos.GetInt32(6));
+
+                    listaAlquileres.Add(alquiler);
                 }
+            }
+            return listaAlquileres;
+        }
 
-                return listaProveedores;
 
+        private SqlCommand ObtenerParametros(SqlCommand cmd, Boolean id = false)
+        {
+
+
+
+            SqlParameter p1 = new SqlParameter("@cliente", this.cliente.Id);
+            SqlParameter p2 = new SqlParameter("@FechaSalida", this.FechaSalida);
+            SqlParameter p3 = new SqlParameter("@FechaEntrada", this.FechaSalida);
+            SqlParameter p4 = new SqlParameter("@estadoAlq", this.estadoAlq);
+            SqlParameter p5 = new SqlParameter("@precioAlq", this.precioAlq);
+            SqlParameter p6 = new SqlParameter("@flota", this.flota.Id);
+
+
+            p1.SqlDbType = SqlDbType.Int;
+            p2.SqlDbType = SqlDbType.DateTime;
+            p3.SqlDbType = SqlDbType.DateTime;
+            p4.SqlDbType = SqlDbType.Int;
+            p5.SqlDbType = SqlDbType.Float;
+            p6.SqlDbType = SqlDbType.Int;
+
+            cmd.Parameters.Add(p1);
+            cmd.Parameters.Add(p2);
+            cmd.Parameters.Add(p3);
+            cmd.Parameters.Add(p4);
+            cmd.Parameters.Add(p5);
+            cmd.Parameters.Add(p6);
+
+
+
+            if (id == true)
+            {
+                cmd = ObtenerParametroId(cmd);
             }
 
+            return cmd;
         }
+
+        private SqlCommand ObtenerParametroId(SqlCommand cmd)
+        {
+            SqlParameter p7 = new SqlParameter("@id", this.Id);
+            p7.SqlDbType = SqlDbType.Int;
+            cmd.Parameters.Add(p7);
+
+            return cmd;
+        }
+
+        public static Alquiler ObtenerAlquiler(int id)
+        {
+            Alquiler alquiler = null;
+
+            if (listaAlquileres.Count == 0) Alquiler.ObtenerAlquileres();
+
+            foreach (Alquiler a in listaAlquileres)
+            {
+                if (a.Id == id)
+                {
+                    alquiler = a;
+                    break;
+                }
+
+            }
+            return alquiler;
+
+        }
+
+
 
         public override string ToString()
         {
-            //return "R. Social: " + RazonSocial +"; " + "Direcc: " + Direccion + ";" + "Contacto: " + Contacto;
-            return RazonSocial;
+            return this.cliente.Nombre;
         }
-    }*/
-}
+    }
 }

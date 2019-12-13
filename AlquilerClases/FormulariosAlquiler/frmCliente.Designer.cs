@@ -46,12 +46,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtNacionalidad = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNroDoc = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.cboNacionalidad = new System.Windows.Forms.ComboBox();
             this.gboListaCliente.SuspendLayout();
             this.gboDatosCliente.SuspendLayout();
             this.SuspendLayout();
@@ -64,6 +64,7 @@
             this.btnLimpiar.TabIndex = 38;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnCancelar
             // 
@@ -73,6 +74,7 @@
             this.btnCancelar.TabIndex = 37;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -82,6 +84,7 @@
             this.btnGuardar.TabIndex = 36;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnEliminar
             // 
@@ -133,6 +136,7 @@
             // 
             // gboDatosCliente
             // 
+            this.gboDatosCliente.Controls.Add(this.cboNacionalidad);
             this.gboDatosCliente.Controls.Add(this.rbuMasc);
             this.gboDatosCliente.Controls.Add(this.rbuFem);
             this.gboDatosCliente.Controls.Add(this.label7);
@@ -142,7 +146,6 @@
             this.gboDatosCliente.Controls.Add(this.label5);
             this.gboDatosCliente.Controls.Add(this.dtpFechaNac);
             this.gboDatosCliente.Controls.Add(this.label4);
-            this.gboDatosCliente.Controls.Add(this.txtNacionalidad);
             this.gboDatosCliente.Controls.Add(this.label3);
             this.gboDatosCliente.Controls.Add(this.txtNombre);
             this.gboDatosCliente.Controls.Add(this.label2);
@@ -235,13 +238,6 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Fecha de Nacimiento";
             // 
-            // txtNacionalidad
-            // 
-            this.txtNacionalidad.Location = new System.Drawing.Point(163, 108);
-            this.txtNacionalidad.Name = "txtNacionalidad";
-            this.txtNacionalidad.Size = new System.Drawing.Size(128, 20);
-            this.txtNacionalidad.TabIndex = 5;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -283,6 +279,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Número de Documento";
             // 
+            // cboNacionalidad
+            // 
+            this.cboNacionalidad.FormattingEnabled = true;
+            this.cboNacionalidad.Location = new System.Drawing.Point(167, 110);
+            this.cboNacionalidad.Name = "cboNacionalidad";
+            this.cboNacionalidad.Size = new System.Drawing.Size(146, 21);
+            this.cboNacionalidad.TabIndex = 15;
+            // 
             // frmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,6 +302,7 @@
             this.Controls.Add(this.gboDatosCliente);
             this.Name = "frmCliente";
             this.Text = "::Mantenimiento Cliente::";
+            this.Load += new System.EventHandler(this.frmCliente_Load);
             this.gboListaCliente.ResumeLayout(false);
             this.gboDatosCliente.ResumeLayout(false);
             this.gboDatosCliente.PerformLayout();
@@ -325,12 +330,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtpFechaNac;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtNacionalidad;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNroDoc;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboNacionalidad;
     }
 }
 

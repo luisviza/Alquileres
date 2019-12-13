@@ -28,6 +28,49 @@ namespace FormulariosAlquiler
             DesbloquearFormulario();
         }
 
+        private void LimpiarFormulario()
+        {
+            txtNroDoc.Text = "";
+            txtNombre.Text = "";
+           cboNacionalidad.SelectedItem = null;
+            dtpFechaNac.Value = System.DateTime.Now;
+            txtDireccion.Text = "";
+            txtContacto.Text = "";
+            rbuFem.Checked = false;
+            rbuMasc.Checked = false;
+            
+        }
+        private void DesbloquearFormulario()
+        {
+            txtNroDoc.Enabled = true;
+            txtNombre.Enabled = true;
+          cboNacionalidad.Enabled = true;
+            dtpFechaNac.Enabled = true;
+            txtDireccion.Enabled = true;
+            txtContacto.Enabled = true;
+            rbuFem.Enabled = true;
+            rbuMasc.Enabled = true;
+            btnGuardar.Enabled = true;
+            btnCancelar.Enabled = true;
+            btnLimpiar.Enabled = true;
+
+        }
+        private void BloquearFormulario()
+        {
+            txtNroDoc.Enabled = false;
+            txtNombre.Enabled = false;
+            cboNacionalidad.Enabled = false;
+            dtpFechaNac.Enabled = false;
+            txtDireccion.Enabled = false;
+            txtContacto.Enabled = false;
+            rbuFem.Enabled = false;
+            rbuMasc.Enabled = false;
+            btnGuardar.Enabled = false;
+            btnCancelar.Enabled = false;
+            btnLimpiar.Enabled = false;
+
+        }
+
         private void btnEditar_Click(object sender, EventArgs e)
         {
             Cliente cliente = (Cliente)lstCliente.SelectedItem;
@@ -69,5 +112,65 @@ namespace FormulariosAlquiler
                 MessageBox.Show("Por favor, Seleccione un item de la lista");
             }
         }
+
+        private void ActualizarListaClientes()
+        {
+            lstCliente.DataSource = null;
+            lstCliente.DataSource = Cliente.ObtenerClientes();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (modo == "I")
+            {
+                if (modo == "I")
+            {
+                    Cliente cliente = ObtenerClienteFormulario();
+
+                    Cliente.AgregarCliente(cliente);
+
+                
+            }
+            else if (modo == "E")
+            {
+                int index = lstCliente.SelectedIndex;
+
+                    Cliente cliente = ObtenerClienteFormulario();
+                    Cliente.EditarCliente(index, cliente);
+                
+            }
+
+                ActualizarListaClientes();
+            LimpiarFormulario();
+            BloquearFormulario(); 
+
+               
+
+
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            LimpiarFormulario();
+            BloquearFormulario();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarFormulario();
+        }
+
+        private void frmCliente_Load(object sender, EventArgs e)
+        {
+            
+
+
+            ActualizarListaClientes();
+            cboNacionalidad.DataSource = Enum.GetValues(typeof(Nacionalidades));
+            cboNacionalidad.SelectedItem = null;
+            BloquearFormulario();
+        }
     }
+
 }

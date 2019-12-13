@@ -43,6 +43,7 @@ namespace FormulariosAlquiler
         private void DesbloquearFormulario()
         {
             txtNroDoc.Enabled = true;
+            txtId.Enabled = false;
             txtNombre.Enabled = true;
           cboNacionalidad.Enabled = true;
             dtpFechaNac.Enabled = true;
@@ -58,6 +59,7 @@ namespace FormulariosAlquiler
         private void BloquearFormulario()
         {
             txtNroDoc.Enabled = false;
+            txtId.Enabled = false;
             txtNombre.Enabled = false;
             cboNacionalidad.Enabled = false;
             dtpFechaNac.Enabled = false;
@@ -209,34 +211,27 @@ namespace FormulariosAlquiler
             if (cliente != null)
             {
                 txtId.Text = Convert.ToString(cliente.Id);
-
-                txtNombre.Text = carne.nombre;
-                txtPeso.Text = Convert.ToString(carne.peso);
-                dtpFechaVencimiento.Value = carne.fecha_vencimiento;
-                txtPrecio.Text = Convert.ToString(carne.precio);
-                cmbCategoria.SelectedItem = (Categoria)carne.categoria;
-                cmbProveedor.SelectedItem = (Proveedor)Proveedor.ObtenerProveedor(carne.proveedor.Id);
-                if (carne.tipo_carne == TipoCarne.Vacuna)
+                txtNroDoc.Text = cliente.NumeroDocumento;
+                txtNombre.Text = cliente.Nombre;
+                cboNacionalidad.SelectedItem = (Nacionalidades)cliente.Nacionalidad;
+                dtpFechaNac.Value = cliente.Fecha_Nacimiento;
+                txtDireccion.Text = cliente.Direccion;
+                txtContacto.Text = cliente.Contacto;
+                if (cliente.Sexo == Sexos.Masculino)
                 {
-                    rdbVacuna.Checked = true;
+                    rbuMasc.Checked = true;
                 }
-                else if (carne.tipo_carne == TipoCarne.Porcina)
+                else if (cliente.Sexo == Sexos.Femenino)
                 {
-                    rdbPorcina.Checked = true;
+                    rbuFem.Checked = true;
                 }
-                ResetearCheckedListBox();
-                foreach (string dia in carne.dias_entrega)
-                {
-                    if (dia == "L") clbDias.SetItemChecked(0, true);
-                    else if (dia == "M") clbDias.SetItemChecked(1, true);
-                    else if (dia == "X") clbDias.SetItemChecked(2, true);
-                    else if (dia == "J") clbDias.SetItemChecked(3, true);
-                    else if (dia == "V") clbDias.SetItemChecked(4, true);
-                    else if (dia == "S") clbDias.SetItemChecked(5, true);
-                    else if (dia == "D") clbDias.SetItemChecked(6, true);
 
 
-                }
+
+                rbuFem.Checked = false;
+                rbuMasc.Checked = false;
+
+
                 if (true)
                 {
 

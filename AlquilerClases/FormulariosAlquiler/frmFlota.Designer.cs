@@ -33,7 +33,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cboVehiculo = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.nudPrecio = new System.Windows.Forms.NumericUpDown();
             this.rdbDisponible = new System.Windows.Forms.RadioButton();
             this.rdbAlquilado = new System.Windows.Forms.RadioButton();
             this.btnLimpiar = new System.Windows.Forms.Button();
@@ -43,10 +42,10 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgvVehiculos = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPrecio)).BeginInit();
+            this.dtgVehiculo = new System.Windows.Forms.DataGridView();
+            this.txtpreciod = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVehiculos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgVehiculo)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -91,13 +90,6 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Precio Diario";
             // 
-            // nudPrecio
-            // 
-            this.nudPrecio.Location = new System.Drawing.Point(139, 90);
-            this.nudPrecio.Name = "nudPrecio";
-            this.nudPrecio.Size = new System.Drawing.Size(132, 20);
-            this.nudPrecio.TabIndex = 5;
-            // 
             // rdbDisponible
             // 
             this.rdbDisponible.AutoSize = true;
@@ -140,25 +132,27 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(341, 321);
+            this.btnGuardar.Location = new System.Drawing.Point(234, 321);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(69, 26);
             this.btnGuardar.TabIndex = 41;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(225, 321);
+            this.btnEliminar.Location = new System.Drawing.Point(141, 321);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(69, 26);
             this.btnEliminar.TabIndex = 40;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(139, 321);
+            this.btnEditar.Location = new System.Drawing.Point(350, 321);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(69, 26);
             this.btnEditar.TabIndex = 39;
@@ -173,6 +167,7 @@
             this.btnAgregar.TabIndex = 38;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // groupBox1
             // 
@@ -185,20 +180,28 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estado Vehículo";
             // 
-            // dgvVehiculos
+            // dtgVehiculo
             // 
-            this.dgvVehiculos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVehiculos.Location = new System.Drawing.Point(49, 160);
-            this.dgvVehiculos.Name = "dgvVehiculos";
-            this.dgvVehiculos.Size = new System.Drawing.Size(539, 144);
-            this.dgvVehiculos.TabIndex = 45;
+            this.dtgVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgVehiculo.Location = new System.Drawing.Point(49, 160);
+            this.dtgVehiculo.Name = "dtgVehiculo";
+            this.dtgVehiculo.Size = new System.Drawing.Size(539, 144);
+            this.dtgVehiculo.TabIndex = 45;
+            // 
+            // txtpreciod
+            // 
+            this.txtpreciod.Location = new System.Drawing.Point(139, 94);
+            this.txtpreciod.Name = "txtpreciod";
+            this.txtpreciod.Size = new System.Drawing.Size(70, 20);
+            this.txtpreciod.TabIndex = 46;
             // 
             // frmFlota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(631, 410);
-            this.Controls.Add(this.dgvVehiculos);
+            this.Controls.Add(this.txtpreciod);
+            this.Controls.Add(this.dtgVehiculo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnCancelar);
@@ -206,7 +209,6 @@
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.nudPrecio);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cboVehiculo);
             this.Controls.Add(this.label2);
@@ -214,10 +216,10 @@
             this.Controls.Add(this.label1);
             this.Name = "frmFlota";
             this.Text = ":::Mantenimiento Flota:::";
-            ((System.ComponentModel.ISupportInitialize)(this.nudPrecio)).EndInit();
+            this.Load += new System.EventHandler(this.frmFlota_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVehiculos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgVehiculo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,7 +232,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cboVehiculo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown nudPrecio;
         private System.Windows.Forms.RadioButton rdbDisponible;
         private System.Windows.Forms.RadioButton rdbAlquilado;
         private System.Windows.Forms.Button btnLimpiar;
@@ -240,6 +241,7 @@
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgvVehiculos;
+        private System.Windows.Forms.DataGridView dtgVehiculo;
+        private System.Windows.Forms.TextBox txtpreciod;
     }
 }

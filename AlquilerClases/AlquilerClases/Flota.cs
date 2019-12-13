@@ -20,7 +20,7 @@ namespace AlquilerClases
         public float precioDiario { get; set; }
         public Estados estado { get; set; }
 
-
+        public List<DetalleFlota> detalleFlota = new List<DetalleFlota>();
         public static List<Flota> listaFlotas = new List<Flota>();
 
 

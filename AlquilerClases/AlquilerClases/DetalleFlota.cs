@@ -8,7 +8,8 @@ namespace AlquilerClases
 {
     public class DetalleFlota
     {
+        public double cantidad { get; set; }
         public Flota IdFlota { get; set; }
-        public Alquiler IdAlquiler { get; set; }
+        
     }
 }

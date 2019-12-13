@@ -19,10 +19,8 @@ namespace AlquilerClases
                 
                 con.Open();
 
-                
                 string textoCmd = "INSERT INTO USUARIO (usuario, password) values(@Usuario, @password)";
 
-                
                 SqlCommand cmd = new SqlCommand(textoCmd, con);
 
              
@@ -101,8 +99,6 @@ namespace AlquilerClases
                     Log.EscribirLog("SqlException", ex.Message);
                     return false;
                 }
-
-
 
             }
         }

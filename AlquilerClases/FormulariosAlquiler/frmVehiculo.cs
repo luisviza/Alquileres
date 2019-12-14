@@ -33,7 +33,7 @@ namespace FormulariosAlquiler
 
         private void frmVehiculo_Load(object sender, EventArgs e)
         {
-            ActualizarListaAlquileres();
+            ActualizarListaVehiculos();
             
             cboMarca.SelectedIndex = 1;
 
@@ -42,7 +42,7 @@ namespace FormulariosAlquiler
 
         }
 
-        private void ActualizarListaAlquileres()
+        private void ActualizarListaVehiculos()
         {
             lstMarca.DataSource = null;
             lstMarca.DataSource = Vehiculo.ObtenerVehiculos();
@@ -89,9 +89,9 @@ namespace FormulariosAlquiler
         private Vehiculo ObtenerVehiculoFormulario()
         {
             Vehiculo vehiculo = new Vehiculo();
-            if (!string.IsNullOrEmpty(txtNroMatricula.Text))
+            if (!string.IsNullOrEmpty(txtId.Text))
             {
-                vehiculo.Id = Convert.ToInt32(txtNroMatricula.Text);
+                vehiculo.Id = Convert.ToInt32(txtId.Text);
             }
 
             vehiculo.Matricula = txtNroMatricula.Text;

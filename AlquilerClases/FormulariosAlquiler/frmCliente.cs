@@ -139,8 +139,9 @@ namespace FormulariosAlquiler
 
                     Cliente cliente = ObtenerClienteFormulario();
                     Cliente.EditarCliente(index, cliente);
-                
-            }
+                    
+
+                }
 
                 ActualizarListaClientes();
             LimpiarFormulario();

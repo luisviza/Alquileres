@@ -49,6 +49,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.gboListaMarca = new System.Windows.Forms.GroupBox();
             this.lstMarca = new System.Windows.Forms.ListBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.gboDatosVehiculo.SuspendLayout();
             this.gboListaMarca.SuspendLayout();
             this.SuspendLayout();
@@ -109,6 +110,7 @@
             // 
             // gboDatosVehiculo
             // 
+            this.gboDatosVehiculo.Controls.Add(this.textBox1);
             this.gboDatosVehiculo.Controls.Add(this.cboMarca);
             this.gboDatosVehiculo.Controls.Add(this.txtPlazas);
             this.gboDatosVehiculo.Controls.Add(this.label6);
@@ -245,6 +247,13 @@
             this.lstMarca.Size = new System.Drawing.Size(255, 277);
             this.lstMarca.TabIndex = 12;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(273, 30);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(41, 20);
+            this.textBox1.TabIndex = 13;
+            // 
             // frmVehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,5 +300,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gboListaMarca;
         private System.Windows.Forms.ListBox lstMarca;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -19,7 +19,7 @@ namespace AlquilerClases
                 
                 con.Open();
 
-                string textoCmd = "INSERT INTO USUARIO (usuario, password) values(@Usuario, @password)";
+                string textoCmd = "INSERT INTO Usuario (usuario, password) values(@Usuario, @password)";
 
                 SqlCommand cmd = new SqlCommand(textoCmd, con);
 

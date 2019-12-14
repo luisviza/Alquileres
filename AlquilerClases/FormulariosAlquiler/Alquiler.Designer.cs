@@ -35,6 +35,10 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.gboDatosVehiculo = new System.Windows.Forms.GroupBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.cboVehiculo = new System.Windows.Forms.ComboBox();
+            this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
             this.cboCliente = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
@@ -45,10 +49,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.gboListaMarca = new System.Windows.Forms.GroupBox();
             this.lstAlquiler = new System.Windows.Forms.ListBox();
-            this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cboVehiculo = new System.Windows.Forms.ComboBox();
-            this.txtPrecio = new System.Windows.Forms.TextBox();
             this.gboDatosVehiculo.SuspendLayout();
             this.gboListaMarca.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +61,7 @@
             this.btnLimpiar.TabIndex = 45;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnCancelar
             // 
@@ -70,6 +71,7 @@
             this.btnCancelar.TabIndex = 44;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -79,6 +81,7 @@
             this.btnGuardar.TabIndex = 43;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnEliminar
             // 
@@ -88,6 +91,7 @@
             this.btnEliminar.TabIndex = 42;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
@@ -97,6 +101,7 @@
             this.btnEditar.TabIndex = 41;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnAgregar
             // 
@@ -106,6 +111,7 @@
             this.btnAgregar.TabIndex = 40;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // gboDatosVehiculo
             // 
@@ -127,6 +133,38 @@
             this.gboDatosVehiculo.TabIndex = 39;
             this.gboDatosVehiculo.TabStop = false;
             this.gboDatosVehiculo.Text = "Datos del Alquiler";
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Location = new System.Drawing.Point(163, 223);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(92, 20);
+            this.txtPrecio.TabIndex = 16;
+            // 
+            // cboVehiculo
+            // 
+            this.cboVehiculo.FormattingEnabled = true;
+            this.cboVehiculo.Location = new System.Drawing.Point(163, 108);
+            this.cboVehiculo.Name = "cboVehiculo";
+            this.cboVehiculo.Size = new System.Drawing.Size(121, 21);
+            this.cboVehiculo.TabIndex = 15;
+            // 
+            // dtpFechaFin
+            // 
+            this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFin.Location = new System.Drawing.Point(163, 183);
+            this.dtpFechaFin.Name = "dtpFechaFin";
+            this.dtpFechaFin.Size = new System.Drawing.Size(95, 20);
+            this.dtpFechaFin.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(28, 189);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Fecha de Fin";
             // 
             // cboCliente
             // 
@@ -214,38 +252,6 @@
             this.lstAlquiler.Name = "lstAlquiler";
             this.lstAlquiler.Size = new System.Drawing.Size(255, 251);
             this.lstAlquiler.TabIndex = 12;
-            // 
-            // dtpFechaFin
-            // 
-            this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaFin.Location = new System.Drawing.Point(163, 183);
-            this.dtpFechaFin.Name = "dtpFechaFin";
-            this.dtpFechaFin.Size = new System.Drawing.Size(95, 20);
-            this.dtpFechaFin.TabIndex = 14;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 189);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Fecha de Fin";
-            // 
-            // cboVehiculo
-            // 
-            this.cboVehiculo.FormattingEnabled = true;
-            this.cboVehiculo.Location = new System.Drawing.Point(163, 108);
-            this.cboVehiculo.Name = "cboVehiculo";
-            this.cboVehiculo.Size = new System.Drawing.Size(121, 21);
-            this.cboVehiculo.TabIndex = 15;
-            // 
-            // txtPrecio
-            // 
-            this.txtPrecio.Location = new System.Drawing.Point(163, 223);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(92, 20);
-            this.txtPrecio.TabIndex = 16;
             // 
             // Alquiler
             // 

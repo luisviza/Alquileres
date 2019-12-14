@@ -27,12 +27,12 @@ namespace FormulariosAlquiler
             cboVehiculo.SelectedItem = null;
             Vehiculo v = new Vehiculo();
             
-            ActualizarListasFlotas();
+            
             
             cboVehiculo.DataSource = Vehiculo.ObtenerVehiculos();
             cboVehiculo.SelectedItem = null;
             
-            BloquearFormulario();
+            
 
         }
 
@@ -44,6 +44,12 @@ namespace FormulariosAlquiler
             flota.detalleFlota.Add(df);
             ActualizarDataGrid();
 
+        }
+
+        private void ActualizarDataGrid()
+        {
+            dtgVehiculo.DataSource = null;
+            dtgVehiculo.DataSource = flota.detalleFlota;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -59,6 +65,7 @@ namespace FormulariosAlquiler
             {
                 flota.Id = Convert.ToInt32(txtIdFlota.Text);
             }
+            
             flota.vehiculo = (Vehiculo)cboVehiculo.SelectedItem;
             flota.precioDiario= Convert.ToInt32(txtpreciod.Text);
             if (rdbAlquilado.Checked)
@@ -90,8 +97,19 @@ namespace FormulariosAlquiler
 
         private void Limpiar()
         {
-            throw new NotImplementedException();
+            txtIdFlota.Text = "";
+            cboVehiculo.SelectedItem = null;
+            txtpreciod.Text = "";
+
+            if (flota.estado == Estados.Disponible)
+            {
+                rdbDisponible.Checked = false;
+            }
+            else if (flota.estado == Estados.Alquilado)
+            {
+                rdbAlquilado.Checked = false;
+            }
         }
     }
     }
-}
+

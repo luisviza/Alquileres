@@ -40,5 +40,11 @@ namespace FormulariosAlquiler
         {
             System.Environment.Exit(-1);
         }
+
+        private void cargarFlotaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFlota form = new frmFlota();
+            form.Show();
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace AlquilerClases
     public enum Nacionalidades
     {
         afgano,
+
         albanés,
         Argelino,
         Andorrano,

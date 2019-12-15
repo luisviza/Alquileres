@@ -165,6 +165,11 @@ namespace FormulariosAlquiler
         {
             LimpiarFormulario();
         }
+
+        private void frmVehiculo_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
-}
+

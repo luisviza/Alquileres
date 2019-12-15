@@ -35,6 +35,7 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.gboDatosVehiculo = new System.Windows.Forms.GroupBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.cboMarca = new System.Windows.Forms.ComboBox();
             this.txtPlazas = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.gboListaMarca = new System.Windows.Forms.GroupBox();
             this.lstMarca = new System.Windows.Forms.ListBox();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.gboDatosVehiculo.SuspendLayout();
             this.gboListaMarca.SuspendLayout();
             this.SuspendLayout();
@@ -129,6 +129,13 @@
             this.gboDatosVehiculo.TabIndex = 39;
             this.gboDatosVehiculo.TabStop = false;
             this.gboDatosVehiculo.Text = "Datos Vehiculo";
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(273, 30);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(41, 20);
+            this.txtId.TabIndex = 13;
             // 
             // cboMarca
             // 
@@ -247,13 +254,6 @@
             this.lstMarca.Size = new System.Drawing.Size(255, 277);
             this.lstMarca.TabIndex = 12;
             // 
-            // txtId
-            // 
-            this.txtId.Location = new System.Drawing.Point(273, 30);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(41, 20);
-            this.txtId.TabIndex = 13;
-            // 
             // frmVehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -270,6 +270,7 @@
             this.Controls.Add(this.gboListaMarca);
             this.Name = "frmVehiculo";
             this.Text = "::Mantenimiento Vehículo::";
+            this.Load += new System.EventHandler(this.frmVehiculo_Load_1);
             this.gboDatosVehiculo.ResumeLayout(false);
             this.gboDatosVehiculo.PerformLayout();
             this.gboListaMarca.ResumeLayout(false);

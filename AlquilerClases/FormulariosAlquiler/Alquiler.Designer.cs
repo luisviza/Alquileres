@@ -268,6 +268,7 @@
             this.Controls.Add(this.gboListaMarca);
             this.Name = "Alquiler";
             this.Text = "Alquiler";
+            this.Load += new System.EventHandler(this.Alquiler_Load);
             this.gboDatosVehiculo.ResumeLayout(false);
             this.gboDatosVehiculo.PerformLayout();
             this.gboListaMarca.ResumeLayout(false);

@@ -26,6 +26,16 @@ namespace FormulariosAlquiler
             DesbloquearFormulario();
         }
 
+        private void DesbloquearFormulario()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void LimpiarFormulario()
+        {
+            throw new NotImplementedException();
+        }
+
         private void btnEditar_Click(object sender, EventArgs e)
         {
             Vehiculo Vehiculos = (Vehiculo)lstAlquiler.SelectedItem;
@@ -56,6 +66,11 @@ namespace FormulariosAlquiler
             }
         }
 
+        private void ActualizarListaVehiculo()
+        {
+            throw new NotImplementedException();
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (modo == "I")
@@ -75,6 +90,16 @@ namespace FormulariosAlquiler
             BloquearFormulario();
         }
 
+        private void BloquearFormulario()
+        {
+            throw new NotImplementedException();
+        }
+
+        private Vehiculo ObtenerVehiculoFormulario()
+        {
+            throw new NotImplementedException();
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimpiarFormulario();
@@ -82,6 +107,11 @@ namespace FormulariosAlquiler
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Alquiler_Load(object sender, EventArgs e)
         {
 
         }
